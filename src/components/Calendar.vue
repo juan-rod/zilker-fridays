@@ -28,7 +28,7 @@ export default {
   name: 'Calendar',
   data () {
     return {
-      eventDay: 21
+      eventDay: 28
       // monthDays: Array.apply(null, {length: this.daysInMonth}).map((n, i) => i*1)
     }
   },
