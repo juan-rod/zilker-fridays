@@ -12,6 +12,9 @@
       <div class="map-img show-on-scroll" v-if="index === 2">
         <img class="show-on-scroll" src="../assets/images/map-rocks.png" alt="map of zilker">
       </div>
+      <!-- <div class="gif-img show-on-scroll" v-if="index === 3">
+        <gif-container :itemIndex="index"/>
+      </div> -->
     </section>
     
   </div>
@@ -19,9 +22,11 @@
 
 <script>
 import Calendar from '../components/Calendar'
-import GiphyService from '@/services/giphy/Service'
+// import GifContainer from '@/components/GifContainer'
+// import GiphyService from '@/services/giphy/Service'
 export default {
   name: 'August',
+  // components: { Calendar, GifContainer },
   components: { Calendar },
   data () {
     return {
@@ -50,7 +55,7 @@ export default {
   },
   created () {
     this.observer = new IntersectionObserver( this.onElementObserved, { root: this.$el, threshold: .5})
-    this.getGifs()
+    // this.getGifs()
   },
 
   mounted () {
@@ -64,12 +69,12 @@ export default {
     this.observer.disconnect();
   },
   methods: {
-    async getGifs () {
-      this.drinks = await GiphyService.getGiphySearch(this.giphySearchTerms[0])
-      this.snacks = await GiphyService.getGiphySearch(this.giphySearchTerms[1])
-      this.blanket = await GiphyService.getGiphySearch(this.giphySearchTerms[2])
-      this.games = await GiphyService.getGiphySearch(this.giphySearchTerms[3])
-    },
+    // async getGifs () {
+    //   this.drinks = await GiphyService.getGiphySearch(this.giphySearchTerms[0])
+    //   this.snacks = await GiphyService.getGiphySearch(this.giphySearchTerms[1])
+    //   this.blanket = await GiphyService.getGiphySearch(this.giphySearchTerms[2])
+    //   this.games = await GiphyService.getGiphySearch(this.giphySearchTerms[3])
+    // },
     onElementObserved (entries) {
       entries.forEach((entry) => {
         entry.isIntersecting

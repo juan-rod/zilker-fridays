@@ -26,12 +26,6 @@
 <script>
 export default {
   name: 'Calendar',
-  data () {
-    return {
-      eventDay: 28
-      // monthDays: Array.apply(null, {length: this.daysInMonth}).map((n, i) => i*1)
-    }
-  },
   computed: {
     getMonthYear() {
       let date = new Date(); 
@@ -45,6 +39,16 @@ export default {
     },
     year () {
       return this.getMonthYear.year
+    },
+    eventDay () {
+      function getNextDayOfWeek(dayOfWeek) {
+        let dateTime = new Date()
+        let date = new Date(dateTime.getTime())
+        date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7)
+        return date.getDate()
+      }
+      const friday = 5
+      return getNextDayOfWeek(friday)
     },
     daysInMonth() {
       return new Date(this.year, this.month, 0).getDate();
